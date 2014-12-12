@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Phusion <info@phusion.nl>
+FROM fedora:21
+MAINTAINER Niek Bosch <code@niekbosch.nl>
 
 ENV HOME /root
 RUN mkdir /build

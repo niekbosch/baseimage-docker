@@ -1,11 +1,11 @@
-NAME = phusion/baseimage
+NAME = niekbosch_nl/baseimage_fedora
 VERSION = 0.9.15
 
 .PHONY: all build test tag_latest release ssh
 
 all: build
 
-build:
+build: runit
 	docker build -t $(NAME):$(VERSION) --rm image
 
 test:
@@ -13,6 +13,13 @@ test:
 
 tag_latest:
 	docker tag $(NAME):$(VERSION) $(NAME):latest
+
+runit:
+	@rm -rf deb-temp
+	@rm -rf image/runit-deb
+	@mkdir deb-temp
+	@cd deb-temp && aptitude download runit && find . -type f -name '*.deb' -exec dpkg -x '{}' ../image/runit-deb \; && cd ..
+	@rm -rf deb-temp
 
 release: test tag_latest
 	@if ! docker images $(NAME) | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME) version $(VERSION) is not yet built. Please run 'make build'"; false; fi
