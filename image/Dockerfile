@@ -1,4 +1,4 @@
-FROM fedora:21
+FROM centos:centos6
 MAINTAINER Niek Bosch <code@niekbosch.nl>
 
 ENV HOME /root

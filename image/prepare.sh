@@ -15,6 +15,9 @@ export INITRD=no
 mkdir -p /etc/container_environment
 echo -n no > /etc/container_environment/INITRD
 
+# Enable EPEL
+yum localinstall -y /build/epel-release-6-8.noarch.rpm
+
 ## Fix some issues with APT packages.
 ## See https://github.com/dotcloud/docker/issues/1024
 ## Niek: This tweak is disabled for CentOS, as it uses yum instead of dpkg. I

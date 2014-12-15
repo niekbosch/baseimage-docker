@@ -12,6 +12,7 @@ if [[ ! -e /etc/ssh/ssh_host_rsa_key ]]; then
 	ssh-keygen -q -f "/etc/ssh/ssh_host_dsa_key" -N '' -t dsa
 	echo "Creating SSH2 ECDSA key; this may take some time ..."
 	ssh-keygen -q -f "/etc/ssh/ssh_host_ecdsa_key" -N '' -t ecdsa
-	echo "Creating SSH2 ED25519 key; this may take some time ..."
-	ssh-keygen -q -f "/etc/ssh/ssh_host_ed25519_key" -N '' -t ed25519
+## Niek: This key type is not available with the openSSH version of CentOS 6 apparently
+#	echo "Creating SSH2 ED25519 key; this may take some time ..."
+#	ssh-keygen -q -f "/etc/ssh/ssh_host_ed25519_key" -N '' -t ed25519
 fi

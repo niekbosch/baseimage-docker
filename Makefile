@@ -1,4 +1,4 @@
-NAME = niekbosch_nl/baseimage_fedora
+NAME = niekbosch_nl/baseimage_centos6
 VERSION = 0.9.15
 
 .PHONY: all build test tag_latest release ssh
